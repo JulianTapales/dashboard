@@ -9,6 +9,7 @@ import {classnames} from '../../utils/classnames'
 import mapProps from '../../components/MapProps/MapProps'
 import OnboardingPopup from '../../components/onboarding/OnboardingPopup/OnboardingPopup'
 import PlaygroundAPopup from '../../components/onboarding/PlaygroundAPopup/PlaygroundAPopup'
+import CongratulationsPopup from '../../components/onboarding/CongratulationsPopup/CongratulationsPopup'
 import {showPopup} from '../../actions/popup'
 import {connect} from 'react-redux'
 import {validateProjectName} from '../../utils/nameValidator'
@@ -87,7 +88,9 @@ class ProjectRootView extends React.Component<Props, {}> {
     }
     // TODO remove after testing
     const id = cuid()
-    const element = <PlaygroundAPopup />
+    // const element = <PlaygroundAPopup />
+    //const element = <OnboardingPopup id={id} firstName={this.props.user.name.split(' ')[0]}/>
+    const element = <CongratulationsPopup />
     this.props.showPopup({element, id, blurBackground: true})
   }
 
@@ -163,7 +166,7 @@ class ProjectRootView extends React.Component<Props, {}> {
           </div>
         </div>
         {this.props.popup.popups.map((popup) =>
-          <div className='fixed left-0 right-0 top-0 bottom-0 z-999' style={{pointerEvents: 'auto', overflow: 'scroll' }} key={popup.id}> 
+          <div className='fixed left-0 right-0 top-0 bottom-0 z-999' style={{pointerEvents: 'auto', overflow: 'scroll' }} key={popup.id}>
             {popup.element}
           </div>
         )}
